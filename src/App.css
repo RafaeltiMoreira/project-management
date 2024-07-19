@@ -1,9 +1,14 @@
 body {
   font-family: "Inter", sans-serif;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .card {
-  border: 1px solid black;
+  border: 1px solid #e53939;
   border-radius: 8px;
   padding: 16px;
   text-align: center;
@@ -13,9 +18,10 @@ body {
 
 .card:hover {
   translate: 3px 3px;
-  box-shadow: 3px 3px black;
+  box-shadow: 3px 3px #e53939;
 }
 
 .card h1 {
   font-size: 24px;
+  color: #000000;
 }
