@@ -1,6 +1,8 @@
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { useEffect, useState } from 'react'
-import './App.css'
 import Card from './components/Card/Card'
+import './App.css'
 
 export function App() {
   const [cardList, setCardList] = useState([]);
@@ -8,10 +10,18 @@ export function App() {
   async function fetchData() {
     const apiUrl = "https://project-management-backend-57wp.onrender.com/card"
 
-    const response = await fetch(apiUrl)
-    const data = await response.json()
+    const response = await fetch(apiUrl).catch(function (error) {
+      console.error('Erro na chamada endpoint /card', error)
+      toast.error('Erro ao carregar lista de Cards.')
+    })
+    
+    if (response.ok) {
+      const data = await response.json()
 
-    setCardList(data)
+      setCardList(data)
+    } else {
+      toast.error('Erro ao carregar lista de Cards.')
+    }
   }
 
   useEffect(function () {
@@ -25,6 +35,7 @@ export function App() {
           return <Card key={index} item={card} />
         })}
       </div>
+      <ToastContainer />
     </>
   )
 }
