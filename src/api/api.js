@@ -11,6 +11,9 @@ export const Api = {
     readAll: function () {
       return this.endpoint() + '/'
     },
+    create: function () {
+      return this.endpoint() + '/'
+    },
     update: function (id) {
       return `${this.endpoint()}/${id}`;
     },
