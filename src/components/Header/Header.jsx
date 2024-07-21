@@ -16,6 +16,7 @@ export default function Header() {
 
       <nav className={menuOpen ? 'open' : ''}>
         <Link to="/">Home</Link>
+        <Link to="/create" onClick={toggleMenu}>Create</Link>
       </nav>
 
       <div className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
