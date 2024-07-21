@@ -3,17 +3,15 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useEffect, useState } from 'react'
 import Card from './components/Card/Card'
 import './App.css'
+import { Api } from './api/api'
 
 export function App() {
   const [cardList, setCardList] = useState([]);
 
   async function fetchData() {
-    const apiUrl = "https://project-management-backend-57wp.onrender.com/card"
+    const apiUrl = Api.card.readAll()
 
-    const response = await fetch(apiUrl).catch(function (error) {
-      console.error('Erro na chamada endpoint /card', error)
-      toast.error('Erro ao carregar lista de Cards.')
-    })
+    const response = await Api.buildApiGetRequest(apiUrl)
     
     if (response.ok) {
       const data = await response.json()
