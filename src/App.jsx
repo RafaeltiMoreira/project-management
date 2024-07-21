@@ -1,17 +1,23 @@
+import { useEffect, useState } from 'react'
 import './App.css'
 import Card from './components/Card/Card'
 
 export function App() {
-  const cardList = []
+  const [cardList, setCardList] = useState([]);
+
   async function fetchData() {
     const apiUrl = "https://project-management-backend-57wp.onrender.com/card"
 
     const response = await fetch(apiUrl)
     const data = await response.json()
-    console.log(data)
+
+    setCardList(data)
   }
-  fetchData()
-  
+
+  useEffect(function () {
+    fetchData()
+  }, [])
+
   return (
     <>
       <div className='cards'>
